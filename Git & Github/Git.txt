@@ -1,0 +1,53 @@
+                           GIT
+Version Control System
+It is a decentralizes version control tool
+It is a tool which helps to manage our project's files. It tracks every changes in our file or code
+It gives us history, it makes easy to collaborate with other people and it makes easy to work on other features at ones by using/creating feature branch.
+ 
+Basic Commands
+1. git init    --> Initialize Local git repository
+2. git add <file/.>    --> Add file(s) to index
+3. git status   ---> Check working status of the tree
+4. git commit -m "message"  --> commit changes in index
+5. git config --global user.name <parwezaamir1>          --> Helps to connect local with github/remote server
+6. git remote add origin <provide here the github https repo link>   --> It helps to connect our local to remote repository
+7. git push origin master  --> push to remote repository
+8. git clone  -->  Copy the remote repository to our current folder
+9. git pull   --> Pull latest changes from remote repository
+10. git log   --> Provide all the history and changes
+11. git difftool HEAD    ----> It shows difference between your local changes and previous version of file 
+12. git rm --cached <file>  --> It helps to remove the added file to untracked
+13. git add <*.html>    --> It adds all the .html file to the staging area
+14. git branch <branch-name>  --> it is going to create new branch
+15. git checkout <branch-name>   --> To switch between the branch
+16. git merge <branch-name> -m "message"   --> To merge the code from branch-name into master branch 
+17. git revert <commit-name or commit-id>   --->Use to revert the commit back to staging 
+
+Interview:-
+1. What is distributed version control system
+  --- These are the system that don't rely on a central server to store a project file and all its version
+  
+2. Git and Github
+  --- Git is a version control system of distributed nature that is used to track changes in the source code during software development. 
+      Main objective of git are speed, data integrity, support for distributed non-linear workflows
+  --- Github is a git repository hosting service plus adds many of its own features. Provides web based graphical interface, access control and several
+      classical collaboration 
+	  
+3. How to fix a broken commit
+   --- In order to fix any broken commit we can use the command  git commit --amend. After running this command we can fix the broken commit message 
+       in the editor 
+	   
+4. Git Pull and Git fetch
+   --- git pull pulls the new changes or commits from a particular branch from your remote repository and updates the target branch in our local repoitory.
+   
+   --- git fetch is use for the same purpose but it works in a slightly different way. It pulls all new commits from the desired branch 
+       and stores it in a new branch in your local repository.
+5. Git diff and git status
+   --- git diff depicts the changes between commits, commit and working tree etc
+   --- git status shows the differnce between the working directory and the index
+
+6. Branching strategy(imp)
+
+7. How to check whether branch has merged or not.
+    ---- git branch --merged
+8. revert and reset	
