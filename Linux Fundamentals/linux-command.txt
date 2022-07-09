@@ -1,0 +1,27 @@
+                                       Linux Commands
+pwd --->present working directory . To check which directory you are currently in
+cat  ---> To read the file data
+ls  ----> To list the files and directory in the present directory
+ls -l  ---> To list the files and directory in the present directory with every details 
+ls -a  ---> To list the files and directory in the present directory with hidden file 
+ls -la   ---->To list all the files, directory and hidden files in the present working directory with more details 
+cd <directory-name>  ----> Change directory
+cd ..   ---> go back one directory
+cd    ----> go back one directory
+mkdir  ----> make directory or folder
+rmdir  ----> remove or delete directory or folder
+touch <file-name> ----> It is use to create file, if its not exist
+rm <file-name>    -----> To remove or delete the file
+cp <file-name> <new-file-name>  ----> Copy file 
+mv <file-name> <directory-name>/   ----> move file to another directory
+mv <file-name> <new-file-name>   ----> It is also used to rename the file
+grep <search-word> <in-file-name>   -----> It is used to search any word in a file
+diff <file-name1> <file-name2>     ----> It is used to compare between the files
+passwd  ----> To change password
+echo ----> To take something and display on the screen
+$    -----> It indicates variable
+ ---Saving result to a file---
+eg.     command > <file-name-to-save> -------->    > is use to save the output of the command to a file
+        command >> <file-name-to-save>   ------>   >> is use to save the outputof the command to a file and append it to the file
+		
+
