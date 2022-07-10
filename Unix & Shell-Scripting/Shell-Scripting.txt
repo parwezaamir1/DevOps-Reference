@@ -1,0 +1,31 @@
+--------AUTOMATION----------
+Automation is a processes by which we can complete any task with less human intervention or without human interventions.
+Completing a task with Scripting(shell scripting , Python Scripting etc...)
+
+--------shell scripting -------
+It is a group of commands written in a sequence to automate
+Mostly available shells on UNIX/Linux OS are:-
+  --bash shell
+  --Sh shell
+  --Ksh shell
+  
+which $SHELL  ------To check which shell is assigned to user
+
+
+---Bash Shell Scripting -----
+  #!/bin/bash
+  
+Steps to automate the task
+1. Get all the manual steps (commands)
+2. write a shell script
+3. Now execute shell scripts
+
+eg. for apache server
+ 1. sudo yum install httpd
+ 2. cd /etc/httpd/conf
+ 3. vi httpd.conf  --> Listen 80
+ 4. sed -i 's/80/8080/' httpd.con
+ 5. cd /var/www/html
+ 6. vi index.html
+ 7. systemctl restart httpd
+ 8. curl http://localhost:8080
