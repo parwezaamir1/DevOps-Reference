@@ -10,8 +10,22 @@ Mostly available shells on UNIX/Linux OS are:-
   --Ksh shell
   
 which $SHELL  ------To check which shell is assigned to user
+cuel <url>   ----> curl (short for "Client URL") is a command line tool that enables data transfer over various network protocols.
+                 It communicates with a web or application server by specifying a relevant URL and the data that need to be sent or received
+weget <url link>  ----> to install any data from link
+tar -xvzf <tar-file-name>   -------> To  extract the tar file to install
+rm -rf <file-name>   -----> to remove the file 
 
-
+echo $PATH   ------> To check the current path
+export PATH=${PATH}:<path to be added>    ------> To add your path to the machine path temporary
+-----To add your path to machine path permanently----
+  1. vi .bash_profile
+  2. add your path here   eg,  :/home/ec2-user/abc/bin
+  3. save it and run the bash_profile 
+        source .bash_profile
+  4. Now check, echo $PATH
+  5. you can see your path added in the PATH of machine permanently  
+		
 ---Bash Shell Scripting -----
   #!/bin/bash
   
@@ -29,3 +43,28 @@ eg. for apache server
  6. vi index.html
  7. systemctl restart httpd
  8. curl http://localhost:8080
+ 
+-----Write and execute shell script----
+         simple shell script to install tomcat
+	1. To get all the manual steps
+ wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.64/bin/apache-tomcat-9.0.64.tar.gz
+ tar -xvzf apache-tomcat-9.0.17.tar.gz
+ rm -rf apache-tomcat-9.0.17.tar.gz
+ mv apache-tomcat-9.0.17/ tomcat9
+   2. Use command line editor like vi, vim,nano etc and create a file like xyz.sh
+   3. Srarts with 
+      #!/bin/bash
+	  wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.64/bin/apache-tomcat-9.0.64.tar.gz
+      tar -xvzf apache-tomcat-9.0.17.tar.gz
+      rm -rf apache-tomcat-9.0.17.tar.gz
+      mv apache-tomcat-9.0.17/ tomcat9
+	save this with xyz.sh 
+   4. Execute shell script
+      using:- sh xyz.sh
+	  or bin/bash xyz.sh
+	  
+	or first give permission to the file 
+	    chmod +x xyz.sh
+		./xyz.sh
+		
+		
