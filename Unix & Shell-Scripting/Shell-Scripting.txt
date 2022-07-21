@@ -17,6 +17,8 @@ tar -xvzf <tar-file-name>   -------> To  extract the tar file to install
 rm -rf <file-name>   -----> to remove the file 
 
 echo $PATH   ------> To check the current path
+ps -ef | grep <process-name>  ---->  It is used to check process is running or not
+find / -name <file-name>   ----> to find the list of the location of file-name
 export PATH=${PATH}:<path to be added>    ------> To add your path to the machine path temporary
 -----To add your path to machine path permanently----
   1. vi .bash_profile
