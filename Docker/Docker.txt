@@ -1,0 +1,88 @@
+Docker---
+
+
+Container--
+      --> Container is an environment that is isolated from the rest of the OS. 
+	  
+	  --> A container is a standard unit of software that packages up code and all its dependencies 
+	     so the application runs quickly and reliably from one computing environment to another. 
+		 
+	  --> A container is like a little server running on your computer. 	 
+		 
+		 A Docker container image is a lightweight, standalone, executable package of software that includes everything needed to run an application:
+		 code, runtime, system tools, system libraries and settings.
+		 
+		 Container images become containers at runtime and in the case of Docker containers – images become containers when they run on Docker Engine.
+		 Available for both Linux and Windows-based applications, containerized software will always run the same, regardless of the infrastructure. 
+		 Containers isolate software from its environment and ensure that it works uniformly despite differences for instance between development and
+		 staging.
+		 
+Image ---
+    --> An image is only read-only template that contains of set of instructions for creating container
+	--> An image contains the instructions for how to create the server or container
+	
+	    A container is a runnable instance of an image
+		 
+		 
+Install Docker on Amazon Linux2
+1. sudo yum update -y
+2. sudo amazon-linux-extras install docker
+3. sudo service docker start
+4. sudo systemctl enable docker
+5. Add the ec2-user to the docker group so you can execute Docker commands without using sudo.
+     sudo usermod -a -G docker ec2-user
+6. Verify that you can run Docker commands without sudo.
+
+     docker info
+  
+  Use this link for more info:  https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-container-image.html
+  
+Important docker commands---
+  1. docker --help    ---> To check the docker options commands
+  2. docker attach    --->  Attach local standard input, output, and error streams to a running container
+  3. docker build     --->  Build an image from a Dockerfile
+  4. docker commit    --->  Create a new image from a container's changes  (docker container commit <container-name> <new-image-name> )
+  5. docker cp        --->  Copy files/folders between a container and the local filesystem
+  7. docker create    --->  Create a new container
+  8. docker diff      --->  Inspect changes to files or directories on a container's filesystem
+  9. docker events    --->  Get real time events from the server
+  10. docker exec     --->   Run a command in a running container(   docker container exec -it <container-id>  )
+  11. docker export   --->   Export a container's filesystem as a tar archive
+  12. docker history  --->   Show the history of an image
+  13. docker images   --->   List images
+  14. docker import   --->   Import the contents from a tarball to create a filesystem image
+  15. docker info     --->   Display system-wide information
+  16. docker inspect  --->   Return low-level information on Docker objects
+  17. docker kill     --->   Kill one or more running containers
+  18. docker load     --->   Load an image from a tar archive or STDIN
+  19. docker login    --->   Log in to a Docker registry
+  20. docker logout   --->   Log out from a Docker registry
+  21. docker logs     --->   Fetch the logs of a container
+  22. docker pause    --->   Pause all processes within one or more containers
+  23. docker port     --->   List port mappings or a specific mapping for the container
+  24. docker ps       --->   List containers
+  25. docker pull     --->   Pull an image or a repository from a registry
+  26. docker push     --->   Push an image or a repository to a registry
+  27. docker rename   --->   Rename a container
+  28. docker restart  --->   Restart one or more containers
+  29. docker rm       --->   Remove one or more containers
+  30. docker rmi      --->   Remove one or more images
+  31. docker run      --->   Run a command in a new container
+  32. docker save     --->   Save one or more images to a tar archive (streamed to STDOUT by default)
+  33. docker search  --->    Search the Docker Hub for images
+  34. docker start   --->    Start one or more stopped containers
+  35. docker stats   --->    Display a live stream of container(s) resource usage statistics
+  36. docker stop    --->    Stop one or more running containers
+  37. docker tag     --->    Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE
+  38. docker top     --->    Display the running processes of a container
+  40. docker unpause --->    Unpause all processes within one or more containers
+  41. docker update  --->    Update configuration of one or more containers
+  42. docker version --->    Show the Docker version information
+  43. docker wait    --->    Block until one or more containers stop, then print their exit codes
+  44. docker container ls -a ---> to list all the containers 
+  45. docker system prune --all   ----> To remove all the container
+  46. docker container create <image-name> ls  ---> To create a container
+  47. docker container start <containerid>      ----> To start a container
+  48. docker container run -it --name=abc <image-name> /bin/sh    ----> To create, start and login into container
+  
+    
