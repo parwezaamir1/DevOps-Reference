@@ -2,6 +2,11 @@ JENKINS---
     --> Java Application
 	--> Used for continuous integration and continuous delivery
 	
+	
+Build Automation---
+    --> It is the process of automating the process of creation of a software build and the associated processes including: compling the source code
+	    into binary code, packaging the binary code, running automated tests and deploying it.
+	
 Automated Deployment---
     --> Automated Deployment is a process of automating the deployment process in a continuous delivery system
 	--> It consist of 4 stages:-
@@ -61,3 +66,19 @@ pipeline {
         
 	
 	
+	
+###################Install jenkins on Ubuntu ec2 machine #####################
+ 
+ https://www.golinuxcloud.com/install-jenkins-on-ec2-instance/
+ 
+ https://vitux.com/how-to-setup-java_home-path-in-ubuntu/
+ 
+ tomcat installation on ubuntu/
+ 
+ https://www.digitalocean.com/community/tutorials/how-to-install-apache-tomcat-10-on-ubuntu-20-04
+ 
+ 
+ java-11-openjdk-11.0.18.0.10-1.amzn2.0.1.x86_64
+ /usr/lib/jvm/java-11-openjdk-11.0.18.0.10-1.amzn2.0.1.x86_64
+ 
+ 

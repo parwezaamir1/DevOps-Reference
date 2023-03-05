@@ -1,0 +1,120 @@
+Kubernetes:-
+           -> Open source container management(orchestration) tool
+		   -> Developed by Google lab
+		   -> Helps managed containerized applications in different deployment environment
+		   -> Written in Golang
+
+Container Management/Orchestration tool:-
+           -> Container Orchestration tool or engine automates deploying, scaling and managing containerized application on a group of servers
+		     eg- kubernetes, docker swarn etc
+			 
+
+Need for container orchestration tool:-
+            -> trend from monolithic to microservices
+			-> incresed usage of containers
+			-> Demand for a proper way of managing those hundreds of containers
+
+
+What features do orchestration tool offers:-
+            -> High Availability or no downtime
+            -> Scalability or high performance
+            -> Disaster recovery - backup and restore
+			-> Self Healing
+			-> Automated Roleouts(deploy changes to the application or its configuration) and Rolebacks(revert the chanages and restore the previous state)
+			
+
+Kubernetes Architecture:-
+            -> Kubernetes cluster is made of atleast one master node(Control panel) and connected to it have couple of worker nodes.
+			   Each node has kublet process running on it. Each worker node has containers of different application deployed on it.
+				On Worker node your applications are running.
+               Node:- Virtual or physical machine
+               Kublet:- primary node agent. It is a kubernetes process that makes is possible for the cluster to talk to each other or communicate to
+						each other and actually executes some task on the node
+
+
+			--> Matser node(Control panel):- 1. API Server- Entry point to kubernetes cluster.
+															To connect with cluster we use CLI(kubectl), API, UI
+
+											 2. Controller Manager:- Keeps track of whats happening in the cluster
+											                         Responsible for overall health of the cluster
+																	 Ensure nodes are running all the time
+																	 Correct number of pods are running as per the spec file
+											 3. Scheduler:- Ensures the Pods placement/schedules across multiple node based on configurations
+											 4. etcd:-key-value storage. which basically holds the current stats cluster so it has all the configurations
+											         data inside and all the status data of each node of cluster insides.Used for backup and restore
+												     Out of all the master components, only the API Server is able to communicate with the etcd data store
+
+			--> Virtual Network:- which enables master node and worker nodes to communicate with each other
+
+			--> Worker nodes:- Can be any physical or virtual machine where containers are deployed.
+			                   Node components run on every node, maintaining running pods and providing the kubernetes runtime environment
+			                  It has following components:
+							    1. Kubelet:- Kubelet is an agent running on each worker node communicates with components from the master node using API Server
+								             Makes sure that containers are running in a pod
+											 Incase any pod has an issue, kubelet tries to restart the pod on the same node or on different nodes
+											 Kubelet only manages the container which were created by kubernetes
+								2. Kube-proxy:- A network agent which runs on each node responsible for maintaining network configuration and rules
+								                
+								3. Container runtime(Pods and container):- It is a software that is responsible for running containers
+                                                                         Kubernetes supports serveral container runtime:-
+                                                                            ----Docker
+                                                                            ----Kubernetes CRI
+                                                                            ----Containered																			
+
+
+Main Kubernetes Components:-
+            1. Node :- Physical or virtual server or machines
+			2. Pod:- Smallest unit in kubernetes.
+			         Abstraction over container
+					 Usually 1 application per pod
+					 We can run multiple container inside one pod
+					 Each pod gets its own IP address to communicate with each other
+					 New IP address on re-creation of pod
+					 Pod can have single or multiple container
+
+			3. Service and Ingress:-
+			         -> Service is basically a static or Permanent IP address that can be attach to each pod
+					 -> Each Pod has its own service
+					 -> Lifecycle of pod and Server is not connected
+					 -> Ingress helps to communicate between the internal servvice to the external service endpoints(like browser url)
+
+
+			4. ConfigMap:-
+			          -> External configuration of your application e.g database url
+
+			5. Secret:-
+			          -> Used to store secret data
+					  -> reference secet in deployment/pod
+					  -> Use it as a environment variable or a properties file
+
+			6. Volume:-
+			          -> Storage on local machine or remote, outside the k8s cluster
+					  -> Kubernetes dose not manage data persistence
+
+			7. Deployment:-
+			           -> Blueprint for applications pods
+					   -> template for creating pods
+					   -> we create deployments
+					   -> Abstraction over Pods
+					   -> Application pods can be replicated using deployment
+					   -> Database pod can not be replicated using deployment
+					   -> Used for stateless apps
+
+			8. StatefulSet:-
+			           -> Same as deployment but for stateful apps such as databases
+					    eg mysql, mongodb etc
+					   -> Used for stateful apps or database
+
+
+Kubernetes Configurations:-
+    Here we need to create two types of configuration 1. Deployment and 2. Service
+	Each configuration file has 3 parts:-
+	     metadata
+		 specifications
+		 status ---Automatically generated and managed by kuberntes
+
+	1. Deployment
+	    eg
+
+
+

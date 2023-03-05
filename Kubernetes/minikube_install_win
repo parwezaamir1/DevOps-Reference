@@ -1,0 +1,50 @@
+Minikube Instalation on Windows
+---------------------------------
+---------------------------------
+
+Step 1: Check if virtualization is supported in your machine
+       -> systeminfo
+	   
+step 2: Download/install kubectl, minikube utility and Add it to the local ENV PATH
+
+       -> https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/
+	   -> https://v1-18.docs.kubernetes.io/docs/tasks/tools/install-minikube/
+	   -> https://github.com/kubernetes/minikub/releases
+	   
+step 3: Download/Install a Hypervisor | ORACLE VM BOX
+        
+		-> https://www.virtualbox.org/wiki/Downloads
+		
+
+Step 4: Start the Minikube (Specify the Driver)
+
+       -> minikube start --driver=driver_name
+
+       -> minikube start --driver=virtualbox
+
+       -> minikube status
+	   
+Step 5: Create & Expose a container in the Minikube Cluster
+
+
+       -> kubectl run hello-vsparkz --image=vsparkz/webserver
+
+       ->  kubectl expose pod hello-vsparkz --type=NodePort --port=80
+
+
+Step 6: Test or Access the Container
+
+
+       -> minikube service hello-vsparkz --url
+
+
+Step 7: Lab Cleanup
+
+
+       -> kubectl delete pods hello-vsparkz
+
+       -> kubectl delete service hello-vsparkz
+
+       -> minikube stop
+
+       -> minikube delete

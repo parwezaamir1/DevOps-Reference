@@ -108,6 +108,11 @@ Dockerfile---
 		
 	PULL - Adds files from your Docker repository
 	    PULL. /file
+	COPY  - copy the file from the host system to the user root folder in the base image
+	    COPY sorce destination
+	EXPOSE - Exposing the network port
+	    EXPOSE 5000
+	WORKDIR - It is the same where we have copied all the file system
 	RUN - Builds your container
 	    RUN make /file
 	CMD - Specifies what command to run within the container
@@ -120,3 +125,8 @@ Dockerfile---
 	    ENV value_1
 	MAINTAINER declares the author field of the images
 	    MAINTAINER author_name
+		
+	Important link: https://www.simplilearn.com/tutorials/docker-tutorial/what-is-dockerfile
+
+
+	
