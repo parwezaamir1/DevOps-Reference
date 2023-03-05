@@ -1,0 +1,15 @@
+echo
+cal
+date
+history
+where
+echo $PATH
+>
+>>
+cat    (cat > output.txt)
+ls 1> output.txt 2> error.txt
+date > date.txt
+date | cut --delimiter=" " --fields=1
+
+alias getdates='date | tee /home/ubuntu/fulldate.txt | cut --delimiter=" " --fields=1 | tee /home/ubuntu/shortdate.txt | xargs echo Hello'
+        

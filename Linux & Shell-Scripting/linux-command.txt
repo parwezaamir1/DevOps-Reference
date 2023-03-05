@@ -1,0 +1,74 @@
+                                       Linux Commands
+pwd --->present working directory . To check which directory you are currently in
+cat  ---> To read the file data
+man   ------> This command in Linux is used to display the user manual of any command that we can run on the terminal
+ps  ax -----> it gives us lots of process running
+ls  ----> To list the files and directory in the present directory
+ls -l  ---> To list the files and directory in the present directory with every details 
+ls -a  ---> To list the files and directory in the present directory with hidden file 
+ls -la   ---->To list all the files, directory and hidden files in the present working directory with more details 
+cd <directory-name>  ----> Change directory
+cd ..   ---> go back one directory
+cd    ----> go directly back to the user directory
+mkdir  ----> make directory or folder
+rmdir  ----> remove or delete directory or folder
+touch <file-name> ----> It is use to create file, if its not exist
+rm <file-name>    -----> To remove or delete the file
+cp <file-name> <new-file-name>  ----> Copy file 
+mv <file-name> <directory-name>/   ----> move file to another directory
+mv <file-name> <new-file-name>   ----> It is also used to rename the file
+grep <search-word> <in-file-name>   -----> It is used to search any word in a file
+diff <file-name1> <file-name2>     ----> It is used to compare between the files
+passwd  ----> To change password
+echo ----> To take something and display on the screen
+uname -a  ----> To check the current OS and its details
+which $SHELL   ----->To check which shell is assigned for the user
+$    -----> It indicates variable
+ ---Saving result to a file---
+eg.     command > <file-name-to-save> -------->    > is use to save the output of the command to a file
+        command >> <file-name-to-save>   ------>   >> is use to save the output of the command to a file and append it to the file
+		
+To Give permission
+- or d ----> - is for file and d is for directory
+rwx    ----> r for read, w for write and x for execute
+u  ----> User or Owner
+g  ----> Group
+o  ----> Other people
+
+eg. drwxrwxrwx  ---> d represents directory, next three represents read, write, execute permission for user, next three represents read, write, execute permission for group, 
+                     next three represents read, write, execute permission for other
+
+chmod 754 <file-name>  --> 7,5,4 represents the individual permission for(in this order) user, group, other
+4   --> stands for "read"
+2  --> stands for "write"
+1  --> stands for "execute"
+0  ---> stands for no "permission"
+
+chmod 777 <file-name>   ----> to give all permission to user, group , other
+chmod o+r <file-name>    ----> to give read permission to other 
+
+To update or download from intenet
+sudo ---> super user download
+apt-get ----> tool for ubuntu
+update   ---> command to update
+
+eg, sudo apt-get update   ----> to update the software
+-----To create user and group----
+sudo useradd <user-name>
+sudo groupadd <group-name>
+sudo usermod -a -G <group-name>
+sudo userdel <user-name>
+
+------Bash Shell Scripting Basics-----
+#!/bin/bash
+#
+# The program is starting
+# Put coomands beow for the execution
+ls -la
+pwd
+
+# program is ending
+
+----To run the script, we use command 
+bash <file-name>
+
