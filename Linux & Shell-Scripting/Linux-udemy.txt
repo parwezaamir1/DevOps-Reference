@@ -1,0 +1,110 @@
+Linux is actually the name of the Kernel and not the whole operating system (which is a very common misconception!). 
+Because there is much more to an operating system than a kernel, 
+the whole operating system is recommended to be called the Gnu/Linux operating system, to reflect the efforts of the Gnu project in building the 
+other pieces
+
+
+echo
+
+cal
+date
+history
+where
+echo $PATH
+>
+>>
+file ----What is file command in Linux?
+			The Linux file command helps determine the type of a file and its data
+cat    (cat > output.txt)
+ls 1> output.txt 2> error.txt
+date > date.txt
+date | cut --delimiter=" " --fields=1
+
+alias getdates='date | tee /home/ubuntu/fulldate.txt | cut --delimiter=" " --fields=1 | tee /home/ubuntu/shortdate.txt | xargs echo Hello'
+
+touch  -----creating empty file
+mkdir   -----creating empty folder/directory
+rm      ---remove file
+rmdir   ----remove empty folder/directory
+rm -rf                 ------remove the file/directory with force, r=recursive, f= forcefully
+rm file*   --- it will remove all the files
+cp file1.txt file2.txt  -----cp command to copy the file from source file1 to destination file2
+mv     --------moving and renameing the file/directory
+ls -a
+ls -l
+ls -lh
+-----------list the contents  a= all file including hidden, l= long form, h=human readable 
+
+sudo apt install locate -y
+sudo apt install mlocate -y
+
+locate -------- locate command searches a database for files and return a list of results. it uses mlocate database in-order to funtion
+                It cann't give you any result if files is creted after the database updated
+            so we need to update the db after files creation. locate command will only list files
+			
+			
+			1. touch file.txt
+			2. locate file.txt   ------it won't work, we need to update the db
+			3. sudo updatedb      ------update the locate database
+			4. locate file.txt   ------it works now and result the output of the file location
+
+find     ------The find command can be used for more sophisticated search tasks than the locate command.
+			This is made possible due to the many powerful options that the find command has.
+			The first thing to note is that the find command will list both files and directories,
+			It doesn't need database, operates on the file system, bit slower than locate command.
+			
+			ls only applies to the current working directory, 
+			while find applies to all files and subdirectories starting from the current working directory
+			
+	find .     ----for current working directory
+	find -maxdepth 4
+	find -type d   ----for directories
+	find -type f    ----for files only
+	find -name "abc.txt"
+	find /etc –exec cp {} ~/Desktop \;   ------will copy every item below the /etc folder on the file system to the ~/Desktop directory.
+                                                Commands are executed on each item using the –exec option
+cat     -----Used to print/read the contents of the files on the terminal
+
+        cat file1.txt
+        less file1.txt
+         find | less
+		 tac file1.txt -----reversing the data 
+
+sort   ----to sort the contents 
+        sort file1.txt
+		sort -r file1.txt  -----sort and reversing the database
+		sort -n filw1.txt    ----sort numerical database
+		
+grep    ----The ability to search for and filter out what you want from a file or standard output makes
+			working with the command line a much more efficient process.
+			
+			grep hello myfile.txt
+			ls /etc | grep *.conf
+			
+			grep -i   --------Search in a case insensitive manner
+						(upper case and lowercase don’t matter).
+	
+tar -zxvf file1.tar.gz    -----untar the file/ compressed 
+sudo apt purge <packagename>    ------remove file/uninstalling 
+sudo apt autoremove              ------remove unwanted dependencies
+sudo apt clean             ---------delete All compressed package archieves
+******************************Bash Script ************************
+which python3
+   ------/usr/bin/pyton3          
+   #!/usr/bin/pyton3         ------starting line of python script
+
+#!/bin/bash    ----------she-bang line. Borne-again shell. Starting of bash script
+
+############## cron tab #####
+crontab -e
+* * * * * command to perform action
+
+
+
+			
+			
+			
+			
+			
+			
+			
