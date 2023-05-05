@@ -5,23 +5,175 @@ It is a tool which helps to manage our project's files. It tracks every changes 
 It gives us history, it makes easy to collaborate with other people and it makes easy to work on other features at ones by using/creating feature branch.
  
 Basic Commands
-1. git init    --> Initialize Local git repository
-2. git add <file/.>    --> Add file(s) to index
-3. git status   ---> Check working status of the tree
-4. git commit -m "message"  --> commit changes in index
-5. git config --global user.name <parwezaamir1>          --> Helps to connect local with github/remote server
-6. git remote add origin <provide here the github https repo link>   --> It helps to connect our local to remote repository
-7. git push origin master  --> push to remote repository
-8. git clone  -->  Copy the remote repository to our current folder
-9. git pull   --> Pull latest changes from remote repository
-10. git log   --> Provide all the history and changes
-11. git difftool HEAD    ----> It shows difference between your local changes and previous version of file 
-12. git rm --cached <file>  --> It helps to remove the added file to untracked
-13. git add <*.html>    --> It adds all the .html file to the staging area
-14. git branch <branch-name>  --> it is going to create new branch
-15. git checkout <branch-name>   --> To switch between the branch
-16. git merge <branch-name> -m "message"   --> To merge the code from branch-name into master branch 
-17. git revert <commit-name or commit-id>   --->Use to revert the commit back to staging 
+lsb_release -a
+        to check the linux distribution version
+
+hostnamectl
+         to check the hostname and details of verison
+
+whoami
+         to check the current user login
+
+apt list --installed git
+          to check the package is installed or not
+
+apt remove git
+         to remove the package installed
+
+Why need version control?
+    -Collaboration
+    -Storing version
+    -Backup
+
+
+git config --global user.name "parwez"
+git config --global user.email "abc@gmail.com"
+             add user and email to track/give permission to do the changes done in the git
+
+git config --global --list
+             to check the user, email added who has right to do the changes
+
+git init
+        to initialized the working directory
+
+git add .
+git add -A
+       to add the files in the staging area
+
+git rm <filename>
+        The git rm command deletes the file from the git repository as well as users
+        system
+
+git rm --cached <file-name>
+       To remove the file from the git repository but not from the system, we use the -
+          -cached option
+
+git restore --staged <file-name>
+        to restore the file from staging area to working directory, when modification has done in file 
+        use "git restore --staged <file>..." to unstage
+
+git restore <file-name>
+     undo the changes in the file
+     "git restore <file>..." to discard changes in working directory
+
+git status
+      to check the status
+
+git diff --staged
+      to check the difference between staging area and working directory files
+
+git diff <file-name>
+     to track the changes in the file
+
+git diff commit1 commit2
+     to check the changes in the commit
+
+git commit -m "message"
+      commit the files from statging area to local repository
+
+git commit -a -m ‘message’
+      To stage and commit multiple files at once, we use the -a flag with the commit
+      command
+
+git ls-files
+      to check the files in the local repository not working directory
+
+git log
+     to check the detailS of all commit
+
+git log --oneline
+     to check the brief log of commit
+
+git commit --amend -m "message"
+      To change the commit message, use amend
+
+git show <commit-id>
+      To check the details of changes in commits
+
+git tag -a <tag-name> <commit-id> -m <message>
+      To give tag to commit-id
+
+
+Branching used for:-
+       Parallel software development
+       For feature/improvement in software
+       For resolving bugfix
+
+git branch
+      To show all the branches
+
+git branch <branch-name>
+     To create new branch
+
+git checkout <branch-name>
+     To switched to other branch i,e <branch-name>
+
+git checkout -b <branch-name>
+     To create new branch and switched out to new branch
+
+git branch -d <branch-name>
+      To delete branch, which are not required
+
+git remote add origin <url>
+       To add your remote origin to push the local changes
+
+git remote -v
+      To show all the remote origin added
+
+git push origin master
+      To push your local changes to remote repository
+
+
+--------------------------------------
+git fetch origin
+        ----Fetch commands collects the changes made in the remote repository and 
+            copies them to the local repository.
+            This commands doesn't affect our workspace or current working directory
+
+git pull origin
+        ----Pull like fetch, gets all the changes from the remote repository and 
+            copies them to the local repository
+             and it merges those changes in the current working directory
+
+----------------------------------------
+
+git reset 
+        ---git reset is used when we want to unstage a file and bring our changes back to the working     directory. 
+             git reset HEAD <filename>
+
+   git reset can also be used to remove commits from the local repository.
+
+  git reset –soft HEAD~1 – This command will remove the commit but would not unstage a file. Our changes        still would be in the staging area.
+
+git reset –mixed HEAD~1 or git reset HEAD~1 – This is the default command that we have used in the above example which removes the commit as well as unstages the file and our changes are stored in the working directory.
+
+git reset –hard HEAD~1 – This command removes the commit as well as the changes from your working directory. This command can also be called destructive command as we would not be able to get back the changes so be careful while using this command.
+   
+      Points to keep in mind while using git reset command –
+
+    --If our commits are not published to remote repository , then we can use git reset.
+    --Use git reset only for removing commits that are present in our local directory and not in remote directory.
+    --We cannot remove a specific commit with the help of git reset , for ex : we cannot say that we want to remove the second commit or the third commit , we can only remove latest commit or latest 2 commits … latest N commits.(HEAD~n) [n here means n recent commits that needs to be deleted].
+      
+
+git revert <commit-id>
+      ---- This command creates a new commit that undoes the changes from a commit. This command adds new history to the project (it doesn't modify existing history).
+
+---------------------------------------------------------------------
+ 
+Git rebase
+    ---Git rebase is a command that allows developers to integrate changes from one branch to another.
+
+
+git merge
+   ---Git merge is a command that allows you to merge branches from Git.
+
+Git rebase and merge both integrate changes from one branch into another. Where they differ is how it's done. Git rebase moves a feature branch into a master. Git merge adds a new commit, preserving the history.
+
+
+---------------------------------------------------------------------
+
+ 
 
 Interview:-
 1. What is distributed version control system
@@ -37,17 +189,10 @@ Interview:-
    --- In order to fix any broken commit we can use the command  git commit --amend. After running this command we can fix the broken commit message 
        in the editor 
 	   
-4. Git Pull and Git fetch
-   --- git pull pulls the new changes or commits from a particular branch from your remote repository and updates the target branch in our local repoitory.
-   
-   --- git fetch is use for the same purpose but it works in a slightly different way. It pulls all new commits from the desired branch 
-       and stores it in a new branch in your local repository.
-5. Git diff and git status
+4. Git diff and git status
    --- git diff depicts the changes between commits, commit and working tree etc
    --- git status shows the differnce between the working directory and the index
 
-6. Branching strategy(imp)
-
-7. How to check whether branch has merged or not.
+5. How to check whether branch has merged or not.
     ---- git branch --merged
-8. revert and reset	
+	
