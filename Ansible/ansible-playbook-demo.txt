@@ -1,0 +1,8 @@
+--- #Target and task playbook
+- hosts: demo
+  user: ansible
+  become: yes
+  connection: ssh
+  tasks:
+     - name: Install docker on linux
+       action: yum name=docker state=installed

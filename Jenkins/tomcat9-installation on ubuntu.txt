@@ -1,0 +1,15 @@
+sudo su -
+apt update 
+apt install default-jdk
+java --version
+apt install tomcat9 tomcat9-admin
+cd /etc/tomcat9/
+ls -la
+
+now we can access ip:8080
+
+vi tomcat-user.xml
+  add the below line
+          <user username="tomcat" password="password" roles="manager-gui, admin-gui, manager-script" />
+
+service tomcat9 restart
