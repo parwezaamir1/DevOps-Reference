@@ -1,0 +1,86 @@
+Docker command grouping (New Syntax)
+
+https://docs.docker.com/engine/install/ubuntu/
+
+$ docker image ls
+$ docker image pull nginx
+$ docker image rm nginx
+$ docker image inspect nginx
+$ docker image history nginx
+
+
+$ docker container ls
+$ docker container run -d --name <container_name> --mount src=<volume_name>,destination=<dest_name> nginx
+$ docker container inspect <container_name>   
+
+-----Once container is up and running we cannot attach volume to it
+-----Create a conatiner with cpu and memory limits
+
+
+
+(Once the container is stopped or deleted, data inside the container gone, so we need volume for that)
+$ docker volume ls 
+$ docker volume create <volume_name>
+$ docker volume inspect <volume_name>   To check all the details of this volume>
+$ docker volume 
+
+
+ 
+
+
+
+$ docker network ls
+
+
+
+###### Docker Swarm ######
+
+$ docker swarm init     ---------to make swarm active/initialized
+
+     -----To add a worker to this swarm, run the following command:
+    docker swarm join --token SWMTKN-1-3bkub4eg9up3g56tw7dtii9tulejzp5zc5kcpxg8g0appoanpn-5g9ryvi3ndae5mbh58pr9gc6z 172.31.90.222:2377
+
+
+    -----To add a manager to this swarm, run 
+'docker swarm join-token manager' 
+      and follow the instructions.
+
+$ docker node ls    ----to check the cluster
+
+-----In docker swarm, we called container as service
+
+$ docker service create -p 8081:80 --name <service-name> --replicas=3 nginx   ----to craete service/container with replicas
+
+$ docker service ls    ----to check the service
+
+$ docker service ps <service-name>      ----to check details about the services and distribution of application
+
+--------Suppose one node has CPU fault and we want to replace the cpu---
+    First we nned to drain/failover that node, so that its task/work can go on another node
+
+$ docker node update --availability drain <hostname of that node>
+
+$ docker node ls    -----now in availability column it will show drain and task moved to another worker node
+
+$ docker service ps <service-name>
+
+$ docker swarm leave   ------this node left the cluster
+
+$ docker node rm <hostname>    ----to remove the node
+
+-----once my cpu/hardware issue replaced 
+  we need the join that node agin in cluster
+
+$ docker swarm join-token worker    -------to get the token to add this node into the cluster. Copy the token and run it in worker node
+
+$ docker node ls    ----to check the node
+
+$ docker service scale <service-name>=5   -----to scale up the service to 5 from 3
+
+    We have to do manula scale up/down in docker swarm, no autoscaling support here but support HA or self healing
+
+
+
+
+
+

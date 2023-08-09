@@ -1,0 +1,21 @@
+What is DevOps?
+-- DevOps is a culture or practice which improves the ability of an organisation to deliver the applications
+ - DevOps is a process of improving the applications delivery by insuring that there is a proper automation in 
+   place, insuring that there is a quality maintained, continuous monitoring and finally there is a continuous
+   testing in place
+
+Software development lifecycle(SDLC)
+-- SDLC is a process that is followed by the industry to design, develop and test high quality product
+    --Planning
+	--Defining
+	--Designing
+	--Building
+	--testing
+	--Deployment
+	--Monitoring
+	
+
+nproc       -----to check the number of cpu
+free -g     ----- to check the memory
+df -h       -----to know the disk size
+top         ----- to check all the above details in one command

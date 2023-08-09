@@ -1,0 +1,235 @@
+############## Kubernetes(k8s) ###############
+
+
+Setup Kubernetes On-prem
+
+1. Minikube     -----single node cluster(All in one setup)     -----Testing and learning
+
+2. Kubeadm      ----- Multi-node or multi-master node
+
+
+Hosted or Managed solutions
+
+AWS      ----EKS
+GCP      ----GKE
+Azure    ----AKS
+DO       ----Digital ocean
+
+
+https://kubernetes.io/docs/tutorials/hello-minikube/
+https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+https://minikube.sigs.k8s.io/docs/start/
+
+
+ After installing kubectl, minikube from above docs, run below command before minikube start
+$ sudo usermod -aG docker $USER && newgrp docker
+
+start minikube with docker driver
+
+$ minikube start --driver=docker
+$ minikube status
+$ kubectl get nodes
+
+
+$ kubectl    ----CLI tool in order to interact with k8s cluster. kube control
+
+$ kubectl cluster-info    --- to get the details about the cluster
+
+$ kubectl cluster-info dump     -----we can use this to further diagnose/debug cluster problem in debug mode. Will get complete details about cluster
+
+$ kubectl get nodes    -----to see the nodes in the cluster
+
+$ kubectl get nodes -o wide    ------to get more info about the nodes
+
+$ kubectl describe node <node-name>    -----to check the properties of a particular node
+
+
+##########  Pod(container) 
+              ---Basic workload
+              ---- container abstarction
+
+$ kubect run <pod-name> --image=nginx      -----it can create a pod which is internal. we can access it when we expose it
+
+$ kubectl get pods
+
+$ kubectl get pods -o wide            -----to check more details about pods
+
+$ kubectl describe pod <pod-name>    ------to check details/properties about particular pod
+
+$ kubectl logs pod <pod-name>            ------ to check logs of the particular pod
+
+$ kubectl exec -it <pod-name> bash   ------- to login iniside a particular pod
+    to logoff ctrl+p+q
+
+$ kubectl delete pod <pod-name>
+
+$ kubectl expose pod <pod-name> --port=80 --type=NodePort
+    Cluster-IP(Default)   -----to expose sevices for internal communication in a cluster
+    NodePort              ----- to expose services to cluster level (30000-32768)
+    Loadbalancer          -----k8s on cloud, we can automatically use loadbalancer
+
+$ kubectl get service     ----- we can find the expose port here
+
+$ kubectl get events      ----- to check all the events/history happend
+$ kubectl explain pods    ----- to get info about the pods
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sample-app
+  labels:
+    env: dev
+spec:
+  containers:
+  - name: sample-cont
+    image: edurekadevops/edureka_demo:latest
+    ports:
+    - containerPort: 8080
+
+
+$ kubectl apply/create -f <file-name.yml>   ----- to inject/deploy/create pod through declerative process
+$ kubectl delete -f <file-name.yml>
+
+$ kubectl run <app-name> --image=nginx --dry-run=client -o yaml > <app-name.yaml>           ----- this command is going to create declerative file and save it with app-name.yaml
+
+$ kubectl run <app-name> --image=nginx --dry-run=client -o json > <app-name.json>           ----- this command is going to create declerative file and save it with app-name.json
+
+$ kubectl expose pod <pod-name> --port=8080 --type=NodePort --dry-run=client -o yaml        ----to expose the services and create a service file with expose port
+
+$ kubectl get all         -----to get pods and services
+
+
+##### Replica   ---to maintain desired-state= actual-state
+
+#### Deployments
+ $ kubectl create deployment nginx-deployment --image=nginx --replicas=3 --dry-run=client -o yaml > nginx-deplyment.yml
+
+ apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx-deployment
+  name: nginx-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-deployment
+  template:
+    metadata:
+      labels:
+        app: nginx-deployment
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        ports:
+        - containerPort: 80
+
+$ kubectl apply -f nginx-deplyment.yml
+
+#### Service
+ $ kubectl expose deployment nginx-deployment --name=my-app --port=80 --type=NodePort --dry-run=client -o yaml > nginx-service.yml
+
+$ kubectl appy -f nginx-service.yml
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: nginx-deployment
+  name: my-app
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+    nodePort: 30000
+  selector:
+    app: nginx-deployment
+  type: NodePort
+
+$ kubectl get deployments
+$ kubectl get rs      ----rs= replica set
+$ kubectl get pods
+$ kubectl get pods --show-labels
+
+---for scaling the deployment
+
+$ kubectl scale deployment nginx-deployment --replicas=5
+
+
+##### ------ for k8s autocomplete
+    https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+  $ echo "source <(kubectl completion bash)" >> ~/.bashrc
+  $ . .bashrc
+
+   first type 2 0r 3 words then press tab, command will be autocomplete. no need to type all the things
+
+
+#################  Rolling update and rolling back
+
+  ---------StrategyType:           RollingUpdate(default startegy)
+  - change image/image-version we need to update in the yaml file of deployment
+
+$ kubectl apply -f nginx-deployment
+ Once you apply the deployment, one new pod is created with the new version and old one is deleted. this process go on till the replica set desired=actual happened
+
+$ kubectl rollout status deployment nginx-deployment
+$ kubectl get rs
+
+--The rolling update is excatly called as Blue-Green deployment model
+
+$ kubectl rollout history deployment nginx-deployment   --- to check the history of rollout update and version
+
+$ kubectl rollout undo deployment nginx-deployment --to-revision=1   ----to undo the rollout to specific version 1
+
+$ kubectl rollout status deployment nginx-deployment
+
+$ kubectl get rs
+
+
+#################  Daemononsets    are also like called replicasets
+                   A DaemonSet ensures that all (or some) Nodes run a copy of a Pod. As nodes are added to the cluster, Pods are added to them. As nodes are removed from the cluster, those Pods are garbage collected. Deleting a DaemonSet will clean up the Pods it created.
+
+Some typical uses of a DaemonSet are:
+
+running a cluster storage daemon on every node
+running a logs collection daemon on every node
+running a node monitoring daemon on every node
+
+$ kubectl get ds --all-namespaces   ----to get the daemonsets
+
+https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+
+$ kubectl apply -f daemonsets.yaml
+
+
+################### Persistent Volume
+
+################### Configmaps 
+
+################### Secrets
+
+################### helm
+    https://helm.sh/docs/intro/install/
+
+
+
+
+
+
+         
+
+
+
+
+
+
+
+
+
+
+
+   

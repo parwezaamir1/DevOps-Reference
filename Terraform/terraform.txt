@@ -1,0 +1,49 @@
+   ###########    Terraform
+
+      -----Deliver infrastructure as code
+      
+     ------Terraform is a powerful open-source Infrastructure as Code (IaC) software tool offered by HashiCorp. It  facilitates provisioning and managing your infrastructure on-prem and in the cloud. As an open-source tool it can be easily extended with the help of its plugin-based architecture.
+
+ 
+******* common use cases for terraform
+     1. Infrastructure as code
+         -----use infrastructure as code to automate the provisioning of your infrastructure including servers, database, firewall policies and almost any other resources
+
+     2. Multi-cloud provisioning
+
+         ---- Deploy serverless functions with AWS Lambda, manage microsoft azure active directory resources, provision a load balancer in GCP and more
+
+     3. Manage network infrastructure
+
+     4. Manage virtual machines images
+     5. Integerate with existing workflows
+         ----- ai=utomate infrastructure deployment through existing CICD workflows
+
+     6. Injects secret into terraform
+
+
+*********** Terraform lifecycle
+
+    1. init
+  
+    2. plan
+
+    3. apply
+
+    4. destroy
+
+https://developer.hashicorp.com/terraform/downloads
+https://registry.terraform.io/browse/providers
+
+**************************   For AWS resources
+
+$ sudo apt install awscli -y
+
+$ aws --help   
+
+$ aws configure
+
+$ aws configure list
+
+$ 
+
