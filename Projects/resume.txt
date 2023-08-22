@@ -1,0 +1,40 @@
+Summary
+ DevOps Engineer with 4+ years optimizing software processes. Proficient in CI/CD, Terraform, AWS services, Jenkins, Git, Ansible. Skilled in Kubernetes/Docker for efficient containerization. Committed to high-quality software delivery through streamlined workflows.
+
+
+Work Experience
+   key responsiblities:-
+    
+Completed the end-to-end DevOps lifecycle implementation, spanning from code checkout to delivery.
+
+Automated deployment workflows by leveraging GitOps principles and ArgoCD.
+
+Executed a Proof of Concept (POC) on the OpenShift platform, managing Docker containers and Kubernetes Clusters.
+
+Implemented various AWS resources and services to optimize application performance and reduce costs, utilizing services like Amazon EC2, Amazon RDS, and Amazon S3 to enhance availability and cost efficiency.
+
+Designed microservices architecture for Kubernetes, ensuring high availability and fault tolerance.
+
+Worked with IAM service, creating new IAM users and groups, defining roles, policies, and identity providers.
+
+Took charge of building and releasing in Dev, Staging, and Pre-prod environments.
+
+Utilized Prometheus and Grafana for real-time monitoring, alerting, and visualization of application and infrastructure metrics, facilitating rapid issue detection and resolution.
+
+Automated infrastructure provisioning using Terraform to ensure scalability and reduce manual errors in resource creation. Managed infrastructure as code for consistency across different stages.
+
+Utilized Ansible for streamlined configuration management automation.
+
+Managed source control with Git and Bitbucket, overseeing user access configuration, conflict resolution, and repository management.
+
+Created AWS resources for different teams through scripts and GUI for Proof of Concept (POC) purposes and ongoing maintenance.
+
+
+
+
+
+4+ years of experience in DevOps, AWS clouds, SDLC 
+
+
+
+
